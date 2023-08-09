@@ -1,5 +1,5 @@
 const operators = {
-  add: (a, b) => a + b,
+  add: (a, b) => +a + +b,
   subtract: (a, b) => a - b,
   multiply: (a, b) => a * b,
   divide: (a, b) => a / b,
@@ -30,7 +30,6 @@ numberBtns.forEach((num) => {
 function doOperation(value) {
   numOne = displayValue;
   numTwo = displayValue;
-  console.log(displayValue);
   displayValue = '';
   operator = value;
 }
@@ -39,11 +38,16 @@ const divideBtn = document.querySelector('.divide');
 divideBtn.addEventListener('click', () => doOperation('divide'));
 
 const multiplyBtn = document.querySelector('.multiply');
+multiplyBtn.addEventListener('click', () => doOperation('multiply'));
+
 const subtractBtn = document.querySelector('.subtract');
+subtractBtn.addEventListener('click', () => doOperation('subtract'));
+
 const addBtn = document.querySelector('.add');
+addBtn.addEventListener('click', () => doOperation('add'));
+
 const equalsBtn = document.querySelector('.equals');
 equalsBtn.addEventListener('click', () => {
-  numTwo = displayValue;
   let result = operate(numOne, operator, numTwo);
   numOne = result;
   displayValue = result;
