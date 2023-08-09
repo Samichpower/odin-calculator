@@ -23,7 +23,7 @@ function populateDisplay() {
 const numberBtns = document.querySelectorAll('.number');
 numberBtns.forEach((num) => {
   num.addEventListener('click', () => {
-    if (!numOne) {
+    if (!operator) {
       numOne += num.textContent;
     } else {
       numTwo += num.textContent;
