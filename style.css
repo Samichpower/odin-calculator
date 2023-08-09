@@ -22,9 +22,10 @@ body {
 }
 
 #output {
-  font-size: 60px;
+  font-size: 70px;
   text-align: right;
   color: white;
+  margin: 0 26px;
 }
 
 .button-container {
