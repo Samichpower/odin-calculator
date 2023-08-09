@@ -35,6 +35,7 @@ numberBtns.forEach((num) => {
 
 function doOperation(value) {
   displayValue = '';
+  numTwo = '';
   operator = value;
 }
 
