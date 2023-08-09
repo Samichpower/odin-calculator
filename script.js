@@ -38,6 +38,15 @@ function doOperation(value) {
   operator = value;
 }
 
+const equalsBtn = document.querySelector('.equals');
+equalsBtn.addEventListener('click', () => {
+  if (!numTwo) numTwo = numOne;
+  let result = operate(numOne, operator, numTwo);
+  numOne = result
+  displayValue = result;
+  populateDisplay();
+});
+
 const divideBtn = document.querySelector('.divide');
 divideBtn.addEventListener('click', () => doOperation('divide'));
 
@@ -49,11 +58,3 @@ subtractBtn.addEventListener('click', () => doOperation('subtract'));
 
 const addBtn = document.querySelector('.add');
 addBtn.addEventListener('click', () => doOperation('add'));
-
-const equalsBtn = document.querySelector('.equals');
-equalsBtn.addEventListener('click', () => {
-  let result = operate(numOne, operator, numTwo);
-  numOne = result
-  displayValue = result;
-  populateDisplay();
-});
