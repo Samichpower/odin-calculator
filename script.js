@@ -15,8 +15,8 @@ function operate(numOne, operator, numTwo) {
   return operators[operator](+numOne, +numTwo);
 }
 
+const displayOutput = document.querySelector('#output');
 function populateDisplay() {
-  const displayOutput = document.querySelector('#output');
   displayOutput.textContent = displayValue;
 }
 
@@ -24,19 +24,25 @@ const numberBtns = document.querySelectorAll('.number');
 numberBtns.forEach((num) => {
   num.addEventListener('click', () => {
     if (clearBtn.textContent === 'AC') clearBtn.textContent = 'C';
+
+    if (displayValue.toString().length >= 10) return;
     
     if (num.textContent === '.' && displayValue.includes('.')) {
       return
     } else {
       displayValue += num.textContent;
       if (!operator) {
-        numOne += num.textContent;
+        numOne = displayValue;
       } else {
-        numTwo += num.textContent;
+        numTwo = displayValue;
       }
     }
 
-    
+    if (displayValue.toString().length >= 8) {
+      displayOutput.style.fontSize = '48px';
+    } else {
+      displayOutput.style.fontSize = '70px';
+    }
     populateDisplay();
   })
 })
