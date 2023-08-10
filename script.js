@@ -104,3 +104,9 @@ posNegBtn.addEventListener('click', () => {
   }
   populateDisplay();
 })
+
+const percentBtn = document.querySelector('.percent');
+percentBtn.addEventListener('click', () => {
+  displayValue = +('0.0' + displayValue);
+  populateDisplay();
+})
