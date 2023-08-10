@@ -54,6 +54,7 @@ numberBtns.forEach((num) => {
 })
 
 function doOperation(value) {
+  numOne = displayValue;
   displayValue = '';
   numTwo = '';
   operator = value;
@@ -94,4 +95,12 @@ clearBtn.addEventListener('click', () => {
   displayValue = '';
   adjustNumSize();
   clearBtn.textContent = 'AC'
+})
+
+const posNegBtn = document.querySelector('.pos-neg');
+posNegBtn.addEventListener('click', () => {
+  if (displayValue > 0) {
+    displayValue = -displayValue;
+  }
+  populateDisplay();
 })
