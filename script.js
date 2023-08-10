@@ -24,13 +24,19 @@ const numberBtns = document.querySelectorAll('.number');
 numberBtns.forEach((num) => {
   num.addEventListener('click', () => {
     if (clearBtn.textContent === 'AC') clearBtn.textContent = 'C';
-
-    if (!operator) {
-      numOne += num.textContent;
+    
+    if (num.textContent === '.' && displayValue.includes('.')) {
+      return
     } else {
-      numTwo += num.textContent;
+      displayValue += num.textContent;
+      if (!operator) {
+        numOne += num.textContent;
+      } else {
+        numTwo += num.textContent;
+      }
     }
-    displayValue += num.textContent;
+
+    
     populateDisplay();
   })
 })
