@@ -20,12 +20,22 @@ function populateDisplay() {
   displayOutput.textContent = displayValue;
 }
 
+function adjustNumSize() {
+  if (displayValue.toString().length >= 11) {
+    displayOutput.style.fontSize = '35px';
+  } else if (displayValue.toString().length >= 8) {
+    displayOutput.style.fontSize = '48px';
+  } else {
+    displayOutput.style.fontSize = '70px';
+  }
+
+}
+
 const numberBtns = document.querySelectorAll('.number');
 numberBtns.forEach((num) => {
   num.addEventListener('click', () => {
     if (clearBtn.textContent === 'AC') clearBtn.textContent = 'C';
-
-    if (displayValue.toString().length >= 10) return;
+    if (displayValue.toString().length >= 14) return;
     
     if (num.textContent === '.' && displayValue.includes('.')) {
       return
@@ -38,11 +48,7 @@ numberBtns.forEach((num) => {
       }
     }
 
-    if (displayValue.toString().length >= 8) {
-      displayOutput.style.fontSize = '48px';
-    } else {
-      displayOutput.style.fontSize = '70px';
-    }
+    adjustNumSize();
     populateDisplay();
   })
 })
@@ -57,9 +63,13 @@ const equalsBtn = document.querySelector('.equals');
 equalsBtn.addEventListener('click', () => {
   if (!numTwo) numTwo = numOne;
   let result = operate(numOne, operator, numTwo);
+  if (result.toString().length > 14) {
+    result = result.toString().slice(0, 14);
+  }
   numOne = result
   displayValue = result;
   populateDisplay();
+  adjustNumSize();
 });
 
 const divideBtn = document.querySelector('.divide');
@@ -82,5 +92,6 @@ clearBtn.addEventListener('click', () => {
   displayValue = 0;
   populateDisplay();
   displayValue = '';
+  adjustNumSize();
   clearBtn.textContent = 'AC'
 })
