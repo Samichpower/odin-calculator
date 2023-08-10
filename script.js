@@ -7,7 +7,7 @@ const operators = {
 
 let numOne = '';
 let numTwo = '';
-let operator;
+let operator = '';
 let displayValue = '';
 
 function operate(numOne, operator, numTwo) {
@@ -23,6 +23,8 @@ function populateDisplay() {
 const numberBtns = document.querySelectorAll('.number');
 numberBtns.forEach((num) => {
   num.addEventListener('click', () => {
+    if (clearBtn.textContent === 'AC') clearBtn.textContent = 'C';
+
     if (!operator) {
       numOne += num.textContent;
     } else {
@@ -59,3 +61,14 @@ subtractBtn.addEventListener('click', () => doOperation('subtract'));
 
 const addBtn = document.querySelector('.add');
 addBtn.addEventListener('click', () => doOperation('add'));
+
+const clearBtn = document.querySelector('.clear');
+clearBtn.addEventListener('click', () => {
+  numOne = '';
+  numTwo = '';
+  operator = '';
+  displayValue = 0;
+  populateDisplay();
+  displayValue = '';
+  clearBtn.textContent = 'AC'
+})
