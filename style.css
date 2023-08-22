@@ -9,12 +9,14 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: darkgray;
 }
 
 .calculator-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  border: 2px solid gray;
   border-radius: 10px;
   height: 600px;
   width: fit-content;
